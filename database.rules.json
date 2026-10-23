@@ -1,0 +1,28 @@
+{
+  "rules": {
+    "dishes": {
+      ".read": true,
+      ".write": "auth != null && (auth.token.email == 'raffaysweet@gmail.com' || auth.token.email == 'pulaomaster.com@gmail.com')"
+    },
+    "settings": {
+      "public": {
+        ".read": true,
+        ".write": "auth != null && (auth.token.email == 'raffaysweet@gmail.com' || auth.token.email == 'pulaomaster.com@gmail.com')"
+      }
+    },
+    "orders": {
+      ".read": "auth != null && (auth.token.email == 'raffaysweet@gmail.com' || auth.token.email == 'pulaomaster.com@gmail.com')",
+      ".write": true
+    },
+    "trackOrders": {
+      "$orderId": {
+        ".read": true,
+        ".write": "!data.exists() || (auth != null && (auth.token.email == 'raffaysweet@gmail.com' || auth.token.email == 'pulaomaster.com@gmail.com'))"
+      }
+    },
+    "chats": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}
